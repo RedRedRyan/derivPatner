@@ -17,7 +17,6 @@
         "noUnusedParameters": false,
         "noFallthroughCasesInSwitch": true,
         "allowJs": true,
-        "baseUrl": "./src",
         "paths": {
             "@/*": ["./*"],
             "Stores/*": ["./stores/*"]

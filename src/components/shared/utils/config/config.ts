@@ -5,9 +5,9 @@ import {
     parseReferralLink,
     parseLandingParams,
     resolveReferralViaProxy,
-} from '@/external/deriv-core';
-import type { AuthConfig } from '@/external/deriv-core';
-import { DerivWSAccountsService } from '@/services/derivws-accounts.service';
+} from '../../../../external/deriv-core';
+import type { AuthConfig } from '../../../../external/deriv-core';
+import { DerivWSAccountsService } from '../../../../services/derivws-accounts.service';
 import brandConfig from '../../../../../brand.config.json';
 
 // =============================================================================
