@@ -37,10 +37,30 @@
 // src/components/layout/header/mobile-menu/use-mobile-menu-config.tsx
 
 import { observer } from 'mobx-react-lite';
+import { NavLink } from 'react-router-dom';
+import { useTranslations } from '@deriv-com/translations';
+import { Text } from '@deriv-com/ui';
+import './menu-items.scss';
 
 export const MenuItems = observer(() => {
-    // No menu items by default - add your custom menu items here
-    return null;
+    const { localize } = useTranslations();
+    
+    return (
+        <div className="app-header__menu-items">
+            <NavLink to="/" end className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+                <Text size="sm">{localize('Bot')}</Text>
+            </NavLink>
+            <NavLink to="/accumulator" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+                <Text size="sm">{localize('Accumulator')}</Text>
+            </NavLink>
+            <NavLink to="/rise-fall" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+                <Text size="sm">{localize('Rise/Fall')}</Text>
+            </NavLink>
+            <NavLink to="/digits" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+                <Text size="sm">{localize('Digits')}</Text>
+            </NavLink>
+        </div>
+    );
 });
 
 export const TradershubLink = observer(() => {

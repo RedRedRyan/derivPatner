@@ -50,6 +50,31 @@ const useMobileMenuConfig = (
                 // For desktop menu items, see:
                 // src/components/layout/header/header-config.tsx
 
+                {
+                    as: 'a',
+                    label: localize('Bot'),
+                    LeftComponent: () => null,
+                    href: '/',
+                },
+                {
+                    as: 'a',
+                    label: localize('Accumulator'),
+                    LeftComponent: () => null,
+                    href: '/accumulator',
+                },
+                {
+                    as: 'a',
+                    label: localize('Rise/Fall'),
+                    LeftComponent: () => null,
+                    href: '/rise-fall',
+                },
+                {
+                    as: 'a',
+                    label: localize('Digits'),
+                    LeftComponent: () => null,
+                    href: '/digits',
+                },
+
                 // Conditionally include theme toggle based on brand config
                 enableThemeToggle && {
                     as: 'button',

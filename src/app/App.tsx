@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import React from 'react';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Outlet } from 'react-router-dom';
 import { cleanupUrl, handleOAuthCallback } from '@/external/deriv-core';
 import ChunkLoader from '@/components/loader/chunk-loader';
 import LocalStorageSyncWrapper from '@/components/localStorage-sync-wrapper';
@@ -16,6 +16,10 @@ import './app-root.scss';
 
 const Layout = lazy(() => import('../components/layout'));
 const AppRoot = lazy(() => import('./app-root'));
+const AccumulatorTab = lazy(() => import('../templates/accumulator/AccumulatorTab'));
+const RiseFallTab = lazy(() => import('../templates/rise-fall/RiseFallTab'));
+const DigitsTab = lazy(() => import('../templates/digits/DigitsTab'));
+import { TemplateAuthProvider } from '../templates/shared/auth/TemplateAuthProvider';
 
 /**
  * Component wrapper to handle language URL parameter
@@ -58,6 +62,19 @@ const router = createBrowserRouter(
             <Route index element={<AppRoot />} />
             {/* App Builder embeds the template at /preview — render the same app shell */}
             <Route path='preview' element={<AppRoot />} />
+            <Route
+                element={
+                    <TemplateAuthProvider>
+                        <Suspense fallback={<ChunkLoader message={localize('Loading template...')} />}>
+                            <Outlet />
+                        </Suspense>
+                    </TemplateAuthProvider>
+                }
+            >
+                <Route path='accumulator' element={<AccumulatorTab />} />
+                <Route path='rise-fall' element={<RiseFallTab />} />
+                <Route path='digits' element={<DigitsTab />} />
+            </Route>
         </Route>
     ),
     { basename: routerBasename }

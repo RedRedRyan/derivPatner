@@ -62,6 +62,8 @@ export default defineConfig({
       '@/utils': path.resolve(__dirname, './src/utils'),
       '@/constants': path.resolve(__dirname, './src/constants'),
       '@/stores': path.resolve(__dirname, './src/stores'),
+      '@templates': path.resolve(__dirname, './src/templates'),
+      '@deriv/core': path.resolve(__dirname, './src/templates/shared/core/src'),
     },
   },
   output: {
@@ -97,6 +99,11 @@ export default defineConfig({
   },
   dev: { hmr: true },
   tools: {
+    postcss: (opts) => {
+      opts.postcssOptions = {
+        plugins: [require('tailwindcss'), require('autoprefixer')],
+      };
+    },
     rspack: {
       module: {
         rules: [

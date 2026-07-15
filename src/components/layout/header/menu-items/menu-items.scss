@@ -6,3 +6,27 @@
         background-color: transparent;
     }
 }
+
+.app-header__menu-items {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 24px;
+
+    .menu-item {
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+        color: inherit;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        &.active {
+            background-color: rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+    }
+}
